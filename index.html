@@ -9,7 +9,14 @@
 </head>
 <body>
   <div data-controller="Hello">
-    
+    <input data-target="Hello.name" type="text">
+  
+    <button data-action="click->Hello#greet">
+      Greet
+    </button>
+  
+    <span data-target="Hello.output">
+    </span>
   </div>
 </body>
 </html>
