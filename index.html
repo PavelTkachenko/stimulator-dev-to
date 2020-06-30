@@ -4,19 +4,39 @@
   <meta charset="UTF-8">
   <title>Stimulator</title>
   <script src="script/Controller.js" defer></script>
-  <script src="script/HelloController.js" defer></script>
+  <script src="script/ColorController.js" defer></script>
   <script src="script/index.js" defer></script>
+  <style>
+    .field {
+      width: 200px;
+      text-align: right;
+    }
+
+    .result {
+      height: 200px;
+      width: 200px;
+    }
+  </style>
 </head>
 <body>
-  <div data-controller="Hello">
-    <input data-target="Hello.name" type="text">
-  
-    <button data-action="click->Hello#greet">
-      Greet
-    </button>
-  
-    <span data-target="Hello.output">
-    </span>
+  <div data-controller="Color">
+    <div class="field">
+      <label for="red">Red</label>
+      <input name="red" type="number" min="0" max="255" data-target="Color.red">
+    </div>
+    <div class="field">
+      <label for="green">Green</label>
+      <input name="green" type="number" min="0" max="255" data-target="Color.green" >
+    </div>
+    <div class="field">
+      <label for="blue">Blue</label>
+      <input name="blue" type="number" min="0" max="255" data-target="Color.blue">
+    </div>
+    <div class="field">
+      <button data-action="click->Color#mix">Mix colors</button>
+      <button data-action="click->Color#random">Random</button>
+    </div>
+    <div class="result" data-target="Color.result"></div>
   </div>
 </body>
 </html>

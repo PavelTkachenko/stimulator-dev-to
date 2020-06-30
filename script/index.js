@@ -1,1 +1,1 @@
-new HelloController();
+new ColorController();
