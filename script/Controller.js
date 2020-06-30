@@ -6,6 +6,8 @@ class Controller {
     this._setContainer();
     // Register all targets for controller
     this._registerTargets();
+    // Register our actions
+    this._registerActions();
   }
 
   // We just take our class name (e.g. HelloController) and
@@ -40,6 +42,26 @@ class Controller {
           // nameTarget property
           this[`${target}Target`] = element;
         }
+      })
+    });
+  }
+  _registerActions() {
+    // Very similar to _registerTargets, but
+    // we also need to extract trigger to create
+    // appropriate event listener
+    const actionElements = this._container.querySelectorAll("[data-action]");
+    Array.from(actionElements).forEach(element => {
+      const dataActions = element.getAttribute("data-action").split(",");
+      dataActions.forEach(action => {
+        const trigger = action.split("->")[0];
+        const funcName = action.split("#")[1];
+        element.addEventListener(trigger, (e) => {
+          // If function is defined in your Controller
+          // it will be called after event triggered
+          if (this[funcName] !== undefined) {
+            this[funcName](e);
+          }
+        });
       })
     });
   }
