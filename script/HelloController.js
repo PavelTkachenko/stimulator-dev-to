@@ -1,0 +1,3 @@
+class HelloController extends Controller {
+
+}
